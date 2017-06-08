@@ -20,220 +20,129 @@ require_once('./LINEBotTiny.php');
 
 $channelAccessToken = 'EHH8bCxOPmjOelZP4CkQfq2ZWQ3Ww2B4urQmOEUhTAHr55S2kpwZU8SjOKqPZwk2qL+uFmhmqsp8j0trp8RVDyVRyvgZ0X2691+jDbOkkyUKj0dNAvloZ0nJXux+Nr+S75akt+dUsCd+8N6zj263tAdB04t89/1O/w1cDnyilFU=';
 $channelSecret = 'fb668e65afe9234a56743aea40bfc610';
+<?php
 
-//ユーザーからのメッセージ取得
-$json_string = file_get_contents('php://input');
-$jsonObj = json_decode($json_string);
+$accessToken = 'EHH8bCxOPmjOelZP4CkQfq2ZWQ3Ww2B4urQmOEUhTAHr55S2kpwZU8SjOKqPZwk2qL+uFmhmqsp8j0trp8RVDyVRyvgZ0X2691+jDbOkkyUKj0dNAvloZ0nJXux+Nr+S75akt+dUsCd+8N6zj263tAdB04t89/1O/w1cDnyilFU=';
 
-$type = $jsonObj->{"events"}[0]->{"message"}->{"type"};
-//メッセージ取得
-$text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
-//ReplyToken取得
+$jsonString = file_get_contents('php://input');
+error_log($jsonString);
+$jsonObj = json_decode($jsonString);
+
+$message = $jsonObj->{"events"}[0]->{"message"};
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
-//返信データ作成
-
-//測試訊息
+// 送られてきたメッセージの中身からレスポンスのタイプを選択
 if ($message->{"text"} == '確認') {
     // 確認ダイアログタイプ
     $messageData = [
         'type' => 'template',
-        'altText' => '你好嗎?',
+        'altText' => '確認ダイアログ',
         'template' => [
             'type' => 'confirm',
-            'text' => '你今天好嗎？',
+            'text' => '元気ですかー？',
             'actions' => [
                 [
                     'type' => 'message',
-                    'label' => '我很好喔',
-                    'text' => '我很好喔'
+                    'label' => '元気です',
+                    'text' => '元気です'
                 ],
                 [
                     'type' => 'message',
-                    'label' => '還可以啦',
-                    'text' => '還可以啦'
+                    'label' => 'まあまあです',
+                    'text' => 'まあまあです'
                 ],
             ]
         ]
     ];
-
-
-
-if ($text == 'はい') {
-  $response_format_text = [
-    "type" => "template",
-    "altText" => "こちらの〇〇はいかがですか？",
-    "template" => [
-      "type" => "buttons",
-      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img1.jpg",
-      "title" => "○○レストラン",
-      "text" => "お探しのレストランはこれですね",
-      "actions" => [
-          [
-            "type" => "postback",
-            "label" => "予約する",
-            "data" => "action=buy&itemid=123"
-          ],
-          [
-            "type" => "postback",
-            "label" => "電話する",
-            "data" => "action=pcall&itemid=123"
-          ],
-          [
-            "type" => "uri",
-            "label" => "詳しく見る",
-            "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
-          ],
-          [
-            "type" => "message",
-            "label" => "違うやつ",
-            "text" => "違うやつお願い"
-          ]
-      ]
-    ]
-  ];
-} else if ($text == 'いいえ') {
-  exit;
-} else if ($text == '違うやつお願い') {
-  $response_format_text = [
-    "type" => "template",
-    "altText" => "候補を３つご案内しています。",
-    "template" => [
-      "type" => "carousel",
-      "columns" => [
-          [
-            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-1.jpg",
-            "title" => "●●レストラン",
-            "text" => "こちらにしますか？",
-            "actions" => [
-              [
-                  "type" => "postback",
-                  "label" => "予約する",
-                  "data" => "action=rsv&itemid=111"
-              ],
-              [
-                  "type" => "postback",
-                  "label" => "電話する",
-                  "data" => "action=pcall&itemid=111"
-              ],
-              [
-                  "type" => "uri",
-                  "label" => "詳しく見る（ブラウザ起動）",
-                  "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
-              ]
-            ]
-          ],
-          [
-            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-2.jpg",
-            "title" => "▲▲レストラン",
-            "text" => "それともこちら？（２つ目）",
-            "actions" => [
-              [
-                  "type" => "postback",
-                  "label" => "予約する",
-                  "data" => "action=rsv&itemid=222"
-              ],
-              [
-                  "type" => "postback",
-                  "label" => "電話する",
-                  "data" => "action=pcall&itemid=222"
-              ],
-              [
-                  "type" => "uri",
-                  "label" => "詳しく見る（ブラウザ起動）",
-                  "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
-              ]
-            ]
-          ],
-          [
-            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-3.jpg",
-            "title" => "■■レストラン",
-            "text" => "はたまたこちら？（３つ目）",
-            "actions" => [
-              [
-                  "type" => "postback",
-                  "label" => "予約する",
-                  "data" => "action=rsv&itemid=333"
-              ],
-              [
-                  "type" => "postback",
-                  "label" => "電話する",
-                  "data" => "action=pcall&itemid=333"
-              ],
-              [
-                  "type" => "uri",
-                  "label" => "詳しく見る（ブラウザ起動）",
-                  "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
-              ]
-            ]
-          ]
-      ]
-    ]
-  ];
-} else {
-  $response_format_text = [
-    "type" => "template",
-    "altText" => "こんにちわ 何かご用ですか？（はい／いいえ）",
-    "template" => [
-        "type" => "confirm",
-        "text" => "こんにちわ 何かご用ですか？",
-        "actions" => [
-            [
-              "type" => "message",
-              "label" => "はい",
-              "text" => "はい"
-            ],
-            [
-              "type" => "message",
-              "label" => "いいえ",
-              "text" => "いいえ"
+} elseif ($message->{"text"} == 'ボタン') {
+    // ボタンタイプ
+    $messageData = [
+        'type' => 'template',
+        'altText' => 'ボタン',
+        'template' => [
+            'type' => 'buttons',
+            'title' => 'タイトルです',
+            'text' => '選択してね',
+            'actions' => [
+                [
+                    'type' => 'postback',
+                    'label' => 'webhookにpost送信',
+                    'data' => 'value'
+                ],
+                [
+                    'type' => 'uri',
+                    'label' => 'googleへ移動',
+                    'uri' => 'https://google.com'
+                ]
             ]
         ]
-    ]
-  ];
+    ];
+} elseif ($message->{"text"} == 'カルーセル') {
+    // カルーセルタイプ
+    $messageData = [
+        'type' => 'template',
+        'altText' => 'カルーセル',
+        'template' => [
+            'type' => 'carousel',
+            'columns' => [
+                [
+                    'title' => 'カルーセル1',
+                    'text' => 'カルーセル1です',
+                    'actions' => [
+                        [
+                            'type' => 'postback',
+                            'label' => 'webhookにpost送信',
+                            'data' => 'value'
+                        ],
+                        [
+                            'type' => 'uri',
+                            'label' => '美容の口コミ広場を見る',
+                            'uri' => 'http://clinic.e-kuchikomi.info/'
+                        ]
+                    ]
+                ],
+                [
+                    'title' => 'カルーセル2',
+                    'text' => 'カルーセル2です',
+                    'actions' => [
+                        [
+                            'type' => 'postback',
+                            'label' => 'webhookにpost送信',
+                            'data' => 'value'
+                        ],
+                        [
+                            'type' => 'uri',
+                            'label' => '女美会を見る',
+                            'uri' => 'https://jobikai.com/'
+                        ]
+                    ]
+                ],
+            ]
+        ]
+    ];
+} else {
+    // それ以外は送られてきたテキストをオウム返し
+    $messageData = [
+        'type' => 'text',
+        'text' => $message->{"text"}
+    ];
 }
 
-$post_data = [
-	"replyToken" => $replyToken,
-	"messages" => [$response_format_text]
-	];
+$response = [
+    'replyToken' => $replyToken,
+    'messages' => [$messageData]
+];
+error_log(json_encode($response));
 
-$ch = curl_init("https://api.line.me/v2/bot/message/reply");
+$ch = curl_init('https://api.line.me/v2/bot/message/reply');
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($response));
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json; charser=UTF-8',
     'Authorization: Bearer ' . $accessToken
-    ));
+));
 $result = curl_exec($ch);
+error_log($result);
 curl_close($ch);
-
-$client = new LINEBotTiny($channelAccessToken, $channelSecret);
-foreach ($client->parseEvents() as $event) {
-    switch ($event['type']) {
-        case 'message':
-            $message = $event['message'];
-            switch ($message['type']) {
-                case 'text':
-                    $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $message['text']
-                            )
-                        )
-                    ));
-                    break;
-                default:
-                    error_log("Unsupporeted message type: " . $message['type']);
-                    break;
-            }
-            break;
-        default:
-            error_log("Unsupporeted event type: " . $event['type']);
-            break;
-    }
-};
