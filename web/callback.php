@@ -18,6 +18,33 @@ if($type != "text"){
 }
 
 //返信データ作成
+
+//測試訊息
+if ($message->{"text"} == '確認') {
+    // 確認ダイアログタイプ
+    $messageData = [
+        'type' => 'template',
+        'altText' => '你好嗎?',
+        'template' => [
+            'type' => 'confirm',
+            'text' => '你今天好嗎？',
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => '我很好喔',
+                    'text' => '我很好喔'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => '還可以啦',
+                    'text' => '還可以啦'
+                ],
+            ]
+        ]
+    ];
+
+
+
 if ($text == 'はい') {
   $response_format_text = [
     "type" => "template",
