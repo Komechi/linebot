@@ -37,9 +37,43 @@ def callback():
 def handle_text_message(event):
     text = event.message.text #message from user
 
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=text)) #reply the same message from user
+
+        for event in events:
+            if isinstance(event, MessageEvent):
+                text = event.message.text
+                if text == '表單':
+                    confirm_template = ConfirmTemplate(text='Do it?', actions=[
+                        MessageTemplateAction(label='Yes', text='Yes!'),
+                        MessageTemplateAction(label='No', text='No!'),
+                    ])
+                    template_message = TemplateSendMessage(
+                       alt_text='Confirm alt text', template=confirm_template)
+                    line_bot_api.reply_message(
+                       event.reply_token,
+                       template_message
+                    )
+                elif text == '按鈕':
+                    buttons_template = ButtonsTemplate(
+                        title='My buttons sample', text='Hello, my buttons', actions=[
+                            URITemplateAction(
+                                label='Go to line.me', uri='https://line.me'),
+                            PostbackTemplateAction(label='ping', data='ping'),
+                            PostbackTemplateAction(
+                                label='ping with text', data='ping',
+                                text='ping'),
+                            MessageTemplateAction(label='Translate Rice', text='米')
+                        ])
+                    template_message = TemplateSendMessage(
+                        alt_text='Buttons alt text', template=buttons_template)
+                    line_bot_api.reply_message(event.reply_token, template_message)
+                else:
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                       TextSendMessage(text=event.message.text)
+                    )
+        return HttpResponse()
+
+
 
 
 import os
