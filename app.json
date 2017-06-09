@@ -1,0 +1,14 @@
+{
+  "name": "LineBotTemplate",
+  "description": "Line Bot API template",
+  "repository": "https://github.com/Komechi/linebot",
+  "keywords": ["Line", "py", "static"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python.git"
+    },
+    {
+      "url": "heroku/bot"
+    }
+  ]
+}
