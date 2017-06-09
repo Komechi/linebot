@@ -1,23 +1,22 @@
-# line-bot-python-heroku
-***
-API : [https://devdocs.line.me/en/](https://devdocs.line.me/en/)  
-line-bot-sdk-python : [https://github.com/line/line-bot-sdk-python](https://github.com/line/line-bot-sdk-python)  
-Fixie : [https://elements.heroku.com/addons/fixie](https://elements.heroku.com/addons/fixie)
-***
+# linebot-test
 
-1. è¨»å†ŠLine Messaging API  
-[https://business.line.me/zh-hant/services/bot](https://business.line.me/zh-hant/services/bot)  
- - è¨˜ä¸‹`Channel Access Token``Channel Secret`
+## ‚±‚ê‚Í‚È‚ÉH
 
-2. Deploy åˆ° Heroku (éœ€å…ˆè¨»å†ŠHerokuå¸³è™Ÿ)  
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/abechen/line-bot-python-heroku)
+LineBot ‚ğ‚Ğ‚Æ‚Ü‚¸ PHP on Heroku ‚Å“®‚©‚µ‚Ä‚İ‚é‚½‚ß‚Ìƒ~ƒjƒ}ƒ‹‚ÈƒtƒŒ[ƒ€ƒ[ƒN(ƒXƒ^[ƒ^[ƒLƒbƒg)‚Å‚·.
+silex ‚ğg‚Á‚Ä‚¢‚Ü‚·.
 
-3. ä¿®æ”¹app.pyåƒæ•¸  
-`line_bot_api = LineBotApi('') #Your Channel Access Token`  
-`handler = WebhookHandler('') #Your Channel Secret` 
+![screen image](https://raw.github.com/wiki/CoachUnited/linebot-test/images/linebot_image.png)
 
-4. Add-ons Fixie  
-[https://elements.heroku.com/addons/fixie](https://elements.heroku.com/addons/fixie) 
+## n‚ß•û
 
-5. åˆ°Line developers è¨­å®š`Webhook URL`  
-`https://{YOUR_HEROKU_SERVER_ID}.herokuapp.com/callback`
+* LINE Bot API Trial account ‚ğæ“¾‚µ‚Ä‚­‚¾‚³‚¢.
+* Heroku ƒAƒJƒEƒ“ƒg‚ğæ“¾‚µ‚Ä‚­‚¾‚³‚¢.
+* ‰º‚Ì Deploy ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚ÄƒfƒvƒƒC‚µ‚Ü‚·. LINE Bot API ƒAƒJƒEƒ“ƒg‚Ì‰æ–Ê‚ÅŠm”F‚Å‚«‚éŠeíƒpƒ‰ƒ[ƒ^’l‚ğŠÂ‹«•Ï”‚Æ‚µ‚Äw’è‚µ‚Ä‚­‚¾‚³‚¢.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](http://bit.ly/linebot-test-deploy)
+
+* LINE Bot Channel Dashboard ‚ÅˆÈ‰º‚Ì’l‚ğİ’è‚µ‚Ü‚·.
+    * LINE ‚©‚ç‚ÌƒR[ƒ‹ƒoƒbƒNURL: `<Heroku‚ÉƒfƒvƒƒC‚³‚ê‚½URL>/callback`
+    * LINE Bot API ‚ğƒAƒNƒZƒX‚·‚éƒT[ƒo‚ÌIPƒAƒhƒŒƒX‚ÌƒzƒƒCƒgƒŠƒXƒg: https://dashboard.usefixie.com/#/account ‚ÅŠm”F‚Å‚«‚Ü‚·.
+* LINE ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç Bot ‚É˜b‚µ‚©‚¯‚Ä‚İ‚Ä‚­‚¾‚³‚¢.
+* web/index.php ‚ğ•ÒW‚µ‚Ä Hack ‚µ‚Ä‚İ‚Ü‚µ‚å‚¤. Enjoy!
