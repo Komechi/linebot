@@ -18,110 +18,110 @@ if($type != "text"){
 }
 
 //返信データ作成
-if ($text == 'はい') {
+if ($text == '有') {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こちらの〇〇はいかがですか？",
+    "altText" => "這邊的這個如何呢?",
     "template" => [
       "type" => "buttons",
       "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img1.jpg",
-      "title" => "○○レストラン",
-      "text" => "お探しのレストランはこれですね",
+      "title" => "○○餐廳",
+      "text" => "這是你在找的飯店嗎?",
       "actions" => [
           [
             "type" => "postback",
-            "label" => "予約する",
+            "label" => "預約",
             "data" => "action=buy&itemid=123"
           ],
           [
             "type" => "postback",
-            "label" => "電話する",
+            "label" => "打電話",
             "data" => "action=pcall&itemid=123"
           ],
           [
             "type" => "uri",
-            "label" => "詳しく見る",
+            "label" => "詳細內容",
             "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
           ],
           [
             "type" => "message",
-            "label" => "違うやつ",
-            "text" => "違うやつお願い"
+            "label" => "換別的,
+            "text" => "請換別的"
           ]
       ]
     ]
   ];
-} else if ($text == 'いいえ') {
+} else if ($text == '沒有') {
   exit;
-} else if ($text == '違うやつお願い') {
+} else if ($text == '請換別的') {
   $response_format_text = [
     "type" => "template",
-    "altText" => "候補を３つご案内しています。",
+    "altText" => "候補有三個喔。",
     "template" => [
       "type" => "carousel",
       "columns" => [
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-1.jpg",
-            "title" => "●●レストラン",
-            "text" => "こちらにしますか？",
+            "title" => "●●餐廳",
+            "text" => "需要哪個呢?",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "予約する",
+                  "label" => "預約",
                   "data" => "action=rsv&itemid=111"
               ],
               [
                   "type" => "postback",
-                  "label" => "電話する",
+                  "label" => "打電話",
                   "data" => "action=pcall&itemid=111"
               ],
               [
                   "type" => "uri",
-                  "label" => "詳しく見る（ブラウザ起動）",
+                  "label" => "詳細內容（開啟網頁）",
                   "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
               ]
             ]
           ],
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-2.jpg",
-            "title" => "▲▲レストラン",
+            "title" => "▲▲餐廳",
             "text" => "それともこちら？（２つ目）",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "予約する",
+                  "label" => "預約",
                   "data" => "action=rsv&itemid=222"
               ],
               [
                   "type" => "postback",
-                  "label" => "電話する",
+                  "label" => "打電話",
                   "data" => "action=pcall&itemid=222"
               ],
               [
                   "type" => "uri",
-                  "label" => "詳しく見る（ブラウザ起動）",
+                  "label" => "詳細內容（開啟網頁）",
                   "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
               ]
             ]
           ],
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-3.jpg",
-            "title" => "■■レストラン",
+            "title" => "■■餐廳",
             "text" => "はたまたこちら？（３つ目）",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "予約する",
+                  "label" => "預約",
                   "data" => "action=rsv&itemid=333"
               ],
               [
                   "type" => "postback",
-                  "label" => "電話する",
+                  "label" => "打電話",
                   "data" => "action=pcall&itemid=333"
               ],
               [
                   "type" => "uri",
-                  "label" => "詳しく見る（ブラウザ起動）",
+                  "label" => "詳細內容（開啟網頁）",
                   "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
               ]
             ]
@@ -132,20 +132,20 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちわ 何かご用ですか？（はい／いいえ）",
+    "altText" => "午安有什麼可以為您服務的嗎？（有／沒有）",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちわ 何かご用ですか？",
+        "text" => "午安有什麼可以為您服務的嗎？",
         "actions" => [
             [
               "type" => "message",
-              "label" => "はい",
-              "text" => "はい"
+              "label" => "有",
+              "text" => "有"
             ],
             [
               "type" => "message",
-              "label" => "いいえ",
-              "text" => "いいえ"
+              "label" => "沒有",
+              "text" => "沒有"
             ]
         ]
     ]
