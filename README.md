@@ -1,22 +1,16 @@
 # linebot-test
 
-## ‚±‚ê‚Í‚È‚ÉH
 
-LineBot ‚ğ‚Ğ‚Æ‚Ü‚¸ PHP on Heroku ‚Å“®‚©‚µ‚Ä‚İ‚é‚½‚ß‚Ìƒ~ƒjƒ}ƒ‹‚ÈƒtƒŒ[ƒ€ƒ[ƒN(ƒXƒ^[ƒ^[ƒLƒbƒg)‚Å‚·.
-silex ‚ğg‚Á‚Ä‚¢‚Ü‚·.
+## å§‹ã‚æ–¹
 
-![screen image](https://raw.github.com/wiki/CoachUnited/linebot-test/images/linebot_image.png)
+* LINE Bot API Trial account ã‚’å–å¾—ã—ã¦ãã ã•ã„.
+* Heroku ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’å–å¾—ã—ã¦ãã ã•ã„.
+* ä¸‹ã® Deploy ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãƒ‡ãƒ—ãƒ­ã‚¤ã—ã¾ã™. LINE Bot API ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®ç”»é¢ã§ç¢ºèªã§ãã‚‹å„ç¨®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã‚’ç’°å¢ƒå¤‰æ•°ã¨ã—ã¦æŒ‡å®šã—ã¦ãã ã•ã„.
 
-## n‚ß•û
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-* LINE Bot API Trial account ‚ğæ“¾‚µ‚Ä‚­‚¾‚³‚¢.
-* Heroku ƒAƒJƒEƒ“ƒg‚ğæ“¾‚µ‚Ä‚­‚¾‚³‚¢.
-* ‰º‚Ì Deploy ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚ÄƒfƒvƒƒC‚µ‚Ü‚·. LINE Bot API ƒAƒJƒEƒ“ƒg‚Ì‰æ–Ê‚ÅŠm”F‚Å‚«‚éŠeíƒpƒ‰ƒ[ƒ^’l‚ğŠÂ‹«•Ï”‚Æ‚µ‚Äw’è‚µ‚Ä‚­‚¾‚³‚¢.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](http://bit.ly/linebot-test-deploy)
-
-* LINE Bot Channel Dashboard ‚ÅˆÈ‰º‚Ì’l‚ğİ’è‚µ‚Ü‚·.
-    * LINE ‚©‚ç‚ÌƒR[ƒ‹ƒoƒbƒNURL: `<Heroku‚ÉƒfƒvƒƒC‚³‚ê‚½URL>/callback`
-    * LINE Bot API ‚ğƒAƒNƒZƒX‚·‚éƒT[ƒo‚ÌIPƒAƒhƒŒƒX‚ÌƒzƒƒCƒgƒŠƒXƒg: https://dashboard.usefixie.com/#/account ‚ÅŠm”F‚Å‚«‚Ü‚·.
-* LINE ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç Bot ‚É˜b‚µ‚©‚¯‚Ä‚İ‚Ä‚­‚¾‚³‚¢.
-* web/index.php ‚ğ•ÒW‚µ‚Ä Hack ‚µ‚Ä‚İ‚Ü‚µ‚å‚¤. Enjoy!
+* LINE Bot Channel Dashboard ã§ä»¥ä¸‹ã®å€¤ã‚’è¨­å®šã—ã¾ã™.
+    * LINE ã‹ã‚‰ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯URL: `<Herokuã«ãƒ‡ãƒ—ãƒ­ã‚¤ã•ã‚ŒãŸURL>/callback`
+    * LINE Bot API ã‚’ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã‚µãƒ¼ãƒã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã®ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆ: https://dashboard.usefixie.com/#/account ã§ç¢ºèªã§ãã¾ã™.
+* LINE ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ Bot ã«è©±ã—ã‹ã‘ã¦ã¿ã¦ãã ã•ã„.
+* web/index.php ã‚’ç·¨é›†ã—ã¦ Hack ã—ã¦ã¿ã¾ã—ã‚‡ã†. Enjoy!
