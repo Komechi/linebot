@@ -1,14 +1,8 @@
 {
-  "name": "LineBotTemplate",
-  "description": "Line Bot API template",
-  "repository": "https://github.com/Komechi/linebot",
-  "keywords": ["Line", "py", "static"],
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-python.git"
-    },
-    {
-      "url": "heroku/python"
-    }
-  ]
+    "name": "#LINE Messaging API test PHP",
+    "description": "heroku 上にデプロイされる LINE Messaging APIのサーバースクリプト",
+    "repository": "https://github.com/Komechi/linebot.git",
+    "logo": "https://bita.jp/dml/wp-content/uploads/2016/04/dijimalab_logo.png",
+    "keywords": ["py", "line-messaging-api"],
+
 }
