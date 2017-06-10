@@ -19,7 +19,7 @@
 /*
  * This polyfill of hash_equals() is a modified edition of https://github.com/indigophp/hash-compat/tree/43a19f42093a0cd2d11874dff9d891027fc42214
  *
- * Copyright (c) 2015 Indigo Development Team
+ * Copyright (c) 2015 Indigo Development Team12
  * Released under the MIT license
  * https://github.com/indigophp/hash-compat/blob/43a19f42093a0cd2d11874dff9d891027fc42214/LICENSE
  */
