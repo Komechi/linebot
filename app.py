@@ -1,9 +1,5 @@
-from cloudant import Cloudant
-from flask import Flask, render_template, request, jsonify, abort
-import cf_deployment_tracker
-import os
-import json
-import urllib.request, urllib.parse
+# encoding: utf-8
+from flask import Flask, request, abort
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -15,26 +11,10 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-
-# Emit Bluemix deployment event
-cf_deployment_tracker.track()
-
 app = Flask(__name__)
 
-config_file = open('config.json' , 'r')
-config = json.load(config_file)
-talk_api_key = config["r9O1mRLDv15gmaUeDuDElikmtuXtrL6g"]
-line_channel_token = config["EHH8bCxOPmjOelZP4CkQfq2ZWQ3Ww2B4urQmOEUhTAHr55S2kpwZU8SjOKqPZwk2qL+uFmhmqsp8j0trp8RVDyVRyvgZ0X2691+jDbOkkyUKj0dNAvloZ0nJXux+Nr+S75akt+dUsCd+8N6zj263tAdB04t89/1O/w1cDnyilFU="]
-line_channel_secret = config["fb668e65afe9234a56743aea40bfc610"]
-
-# On Bluemix, get the port number from the environment variable PORT
-# When running this app on the local machine, default the port to 8080
-port = int(os.getenv('PORT', 8080))
-
-
-line_bot_api = LineBotApi(line_channel_token)
-handler = WebhookHandler(line_channel_secret)
-
+line_bot_api = LineBotApi('EHH8bCxOPmjOelZP4CkQfq2ZWQ3Ww2B4urQmOEUhTAHr55S2kpwZU8SjOKqPZwk2qL+uFmhmqsp8j0trp8RVDyVRyvgZ0X2691+jDbOkkyUKj0dNAvloZ0nJXux+Nr+S75akt+dUsCd+8N6zj263tAdB04t89/1O/w1cDnyilFU=') #Your Channel Access Token
+handler = WebhookHandler('fb668e65afe9234a56743aea40bfc610') #Your Channel Secret
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -53,26 +33,15 @@ def callback():
 
     return 'OK'
 
-
 @handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    data = {
-        "apikey": talk_api_key,
-        "query": event.message.text
-    }
+def handle_text_message(event):
+    text = event.message.text #message from user
 
-    data = urllib.parse.urlencode(data).encode("utf-8")
-    with urllib.request.urlopen("https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk", data=data) as res:
-        #response = res.read().decode("utf-8")
-        reply_json = json.loads(res.read().decode("unicode_escape"))
-
-        if reply_json['status'] == 0:
-            reply = reply_json['results'][0]['reply']
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=reply))
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=text)) #reply the same message from user
 
 
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=port, debug=True)
+import os
+if __name__ == "__main__":
+    app.run(host='0.0.0.0',port=os.environ['PORT'])
